@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+         @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .spin-animation {
+        animation: spin 1s linear infinite;
+    }
+    </style>
+</head>
+<body>
+    <h2 id="heading">Hello</h2>
+    <input type="text" id="input" placeholder="Enter here " >
+    <button onclick="change()">Click Me!</button>
+
+    <script>
+        let heading = document.getElementById("heading");
+       const change = () => {
+      
+        heading.innerText = document.getElementById("input").value;
+       }
+
+       heading.classList.add("spin-animation");
+        
+        // Remove the spinning animation after 1 cycle (1 second)
+        setTimeout(function() {
+            heading.classList.remove("spin-animation");
+        }, 2000);
+
+    </script>
+    
+</body>
+</html>

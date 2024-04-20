@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <button onclick="change()">Click Me!</button>
+    <h1 id="heading">Clicked 0 times</h1>
+    <p id="count"> Hello My Name is Rohit Sharma.</p>
+
+    <script>
+        let count = document.getElementById("count");
+        let cnt = 0;
+        const change = () => {
+            cnt++;
+            let heading = document.getElementById("heading")
+            heading.innerHTML = `Clicked ${cnt} times` ;
+            count.style.fontSize = ` ${ 10 + cnt}px`;
+
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>T4: Content Replacement on Button Click</title>
+    <style>
+        #main-section {
+            
+            padding: 20px;
+        }
+
+        .main {
+                   background-color: aqua;
+                   font-family: cursive;
+        }
+    </style>
+   
+</head>
+<body>
+    <h1>Page Content</h1>
+    <div id="main-section">
+        <p>Original content</p>
+    </div>
+    <button onclick="replaceContent()">Replace Content</button>
+</body>
+<script>
+    let section = document.getElementById('main-section');
+    function replaceContent() {
+        document.getElementById('main-section').innerHTML = "<p>New content with different style</p>";
+        section.classList.add("main")
+    }
+</script>
+</html>

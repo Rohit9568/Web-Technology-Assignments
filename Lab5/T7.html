@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    input[type="range"] {
+        width: 100%;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #tip-amount {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tip Calculator</h2>
+        <label for="tip-percentage">Tip Percentage: <span
+id="tip-percentage-value">15%</span></label>
+        <input type="range" id="tip-percentage" min="0" max="30"
+value="15" step="1">
+        <label for="split">Split With: <span id="split-value">1
+person</span></label>
+        <input type="range" id="split" min="1" max="10" value="1" step="1">
+        <button id="calculate">Calculate Tip</button>
+        <div id="tip-amount"></div>
+    </div>
+
+    <script>
+        const tipPercentageInput = document.getElementById('tip-percentage');
+        const splitInput = document.getElementById('split');
+        const tipAmountOutput = document.getElementById('tip-amount');
+
+        tipPercentageInput.addEventListener('input', updateTipPercentage);
+        splitInput.addEventListener('input', updateSplit);
+
+        function updateTipPercentage() {
+            const tipPercentageValue =
+document.getElementById('tip-percentage-value');
+            tipPercentageValue.textContent = `${tipPercentageInput.value}%`;
+        }
+
+        function updateSplit() {
+            const splitValue = document.getElementById('split-value');
+            splitValue.textContent = `${splitInput.value}
+person${splitInput.value > 1 ? 's' : ''}`;
+        }
+
+        document.getElementById('calculate').addEventListener('click', () => {
+            const billAmount = parseFloat(prompt('Enter the bill amount:'));
+            if (!isNaN(billAmount)) {
+                const tipPercentage = parseFloat(tipPercentageInput.value);
+                const split = parseFloat(splitInput.value);
+                const tipAmount = (billAmount * tipPercentage / 100) / split;
+tipAmountOutput.textContent = `Tip Amount per person: ₹${tipAmount.toFixed(2)}`;
+            }
+        });
+    </script>
+</body>
+</html>
